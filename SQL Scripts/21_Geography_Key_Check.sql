@@ -1,0 +1,16 @@
+USE AdventureWorksDW2025;
+GO
+
+SELECT
+    TABLE_NAME,
+    COLUMN_NAME,
+    DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME IN ('DimGeography', 'DimSalesTerritory')
+  AND (
+       COLUMN_NAME LIKE '%Key%'
+       OR COLUMN_NAME LIKE '%Country%'
+       OR COLUMN_NAME LIKE '%Region%'
+  )
+ORDER BY TABLE_NAME, ORDINAL_POSITION;
+GO
